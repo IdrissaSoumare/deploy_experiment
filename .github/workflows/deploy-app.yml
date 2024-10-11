@@ -4,7 +4,8 @@ name: Build and deploy my app
 #definition du declencheur// attentiona à l'indentation
 on:
   push:
-    branches: -main #declenche le workflow lors du push sur la branche main
+    branches:
+      - main #declenche le workflow lors du push sur la branche main
 
 #definition des jobs, ce quil se passe apres le declenchement
 jobs:
