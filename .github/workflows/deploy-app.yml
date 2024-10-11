@@ -1,0 +1,35 @@
+#nom du workflow
+name: Build and deploy my app
+
+#definition du declencheur// attentiona à l'indentation
+on:
+  push:
+    branches: -main #declenche le workflow lors du push sur la branche main
+
+#definition des jobs, ce quil se passe apres le declenchement
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest #selection d'une VM sur laquelle le workflow va etre executé
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Build Angular app
+        run: npm run build
+
+      - name: Deploy app via SSH
+        uses: appleboy/scp-action@v0.1.7
+        with:
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.USERNAME }}
+          key: ${{ secrets.KEY }}
+          source: "dist/deply-experiment/*"
+          target: "~/public_html"
