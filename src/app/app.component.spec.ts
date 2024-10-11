@@ -15,14 +15,14 @@ describe('AppComponent', () => {
   it(`should have the 'deploy-experiment' title`, () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.componentInstance;
-    expect(app.title).toEqual('deploy-experiment');
+    expect(app.title).toEqual('Idris');
   });
 
   it('should render title', () => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
     const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('.content span')?.textContent).toContain('deploy-experiment app is running!');
+    expect(compiled.querySelector('.content span')?.textContent).toContain('Idris app is running!');
   });
 
   it('should renter when title', () => {
@@ -31,9 +31,7 @@ describe('AppComponent', () => {
     app.title = 'un autre titre';
     fixture.detectChanges();
     const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('.content span')?.textContent).toContain('hello1');
-
-
+    expect(compiled.querySelector('.content span')?.textContent).toContain('un autre titre');
 
   })
 });
