@@ -9,8 +9,26 @@ on:
 
 #definition des jobs, ce quil se passe apres le declenchement
 jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Run tests
+        run: npm test
+
   build-and-deploy:
     runs-on: ubuntu-latest #selection d'une VM sur laquelle le workflow va etre executé
+    needs: test # ce job (build-and-deploy) ne s'execute que si test est réussi
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
