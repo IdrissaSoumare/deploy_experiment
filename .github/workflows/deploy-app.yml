@@ -31,5 +31,5 @@ jobs:
           host: ${{ secrets.HOST }}
           username: ${{ secrets.USERNAME }}
           key: ${{ secrets.KEY }}
-          source: "dist/deply-experiment/*"
+          source: "dist/deploy-experiment/*"
           target: "~/public_html"
