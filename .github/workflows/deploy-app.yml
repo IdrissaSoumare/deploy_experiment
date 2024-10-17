@@ -80,5 +80,7 @@ jobs:
           host: ${{ secrets.HOST }}
           username: ${{ secrets.USERNAME }}
           key: ${{ secrets.KEY }}
-          source: "dist/deploy-experiment/*"
+          source: "dist/deploy-experiment/"
           target: "~/public_html"
+          rm: true # permet de supprimer les fichieers avt de copier les nouvaux
+          strip_components: 2 # permet de ne pas copier l'arborescence de fichier (ici /dist/deploy-experiment devient /)
